@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class EmpleadoServicio implements IEmpleadoServicio{
+public class
+EmpleadoServicio implements IEmpleadoServicio{
 
     @Autowired
     private EmpleadoRepostory empleadoRepostory;
