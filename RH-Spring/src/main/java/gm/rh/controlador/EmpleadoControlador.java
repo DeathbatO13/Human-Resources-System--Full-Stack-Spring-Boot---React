@@ -36,6 +36,7 @@ public class EmpleadoControlador {
         return empleadoServicio.guardarEmpleado(empleado);
     }
 
+
     @GetMapping("empleados/{id}")
     public ResponseEntity<Empleado> obtenerEmpleadoporId(@PathVariable Integer id){
 
