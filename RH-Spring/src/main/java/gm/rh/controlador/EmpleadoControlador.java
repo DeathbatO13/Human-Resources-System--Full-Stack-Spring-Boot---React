@@ -23,7 +23,6 @@ public class EmpleadoControlador {
     private IEmpleadoServicio empleadoServicio;
 
     @GetMapping("/empleados")
-
     public List<Empleado> obtenerEmpleados(){
         var empleados= empleadoServicio.listarEmpleados();
         empleados.forEach(empleado -> logger.info(empleado.toString()));
@@ -48,4 +47,19 @@ public class EmpleadoControlador {
         return ResponseEntity.ok(empleado);
     }
 
+    @PutMapping("empleados/{id}")
+    public ResponseEntity<Empleado> actualizarEmpelado(@PathVariable Integer id, @RequestBody Empleado recibido) {
+        Empleado empleado = empleadoServicio.buscarEmpleadoPorId(id);
+        if(empleado == null){
+            throw new RecursoNoEncontradoExcepcion("El id no existe: "+ id);
+        }
+
+        empleado.setNombre(recibido.getNombre());
+        empleado.setDepartamento(recibido.getDepartamento());
+        empleado.setSueldo(recibido.getSueldo());
+
+        empleadoServicio.guardarEmpleado(empleado);
+
+        return ResponseEntity.ok(empleado);
+    }
 }
