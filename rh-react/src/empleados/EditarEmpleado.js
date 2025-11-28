@@ -17,14 +17,15 @@ export default function EditarEmpleado() {
 
     const { nombre, departamento, sueldo } = empleado;
 
-    useEffect(() => {
-        cargarEmpleado();
-    }, []);
 
     const cargarEmpleado = async () => {
         const resultado = await axios.get(`${urlBase}/${id}`);
         setEmpleado(resultado.data);
     }
+
+     useEffect(() => {
+        cargarEmpleado();
+    }, []);
 
     const onInputChange = (e) => {
         setEmpleado({ ...empleado, [e.target.name]: e.target.value });
@@ -32,17 +33,22 @@ export default function EditarEmpleado() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post(urlBase, empleado);
+        await axios.put(`${urlBase}/${id}`, empleado);
         navegacion('/');
     }
   
 
-  return (
-    <div className='container'>
-        <div className='container text-center' style={{margin: '30px'}}>
-            <h3>Editar Empleado</h3>
-        </div>
-        <form onSubmit={(e)=>onSubmit(e)}>
+    return (
+        <div className='container'>
+                <div className='app-hero'>
+                        <div>
+                                <div className='app-title'>Editar Empleado</div>
+                                <div className='app-sub'>Actualiza los datos del empleado</div>
+                        </div>
+                </div>
+
+                <div className='table-card'>
+                    <form onSubmit={(e)=>onSubmit(e)}>
             <div className="mb-3">
                 <label htmlFor="nombre" className="form-label">Nombre</label>
                 <input type="text" className="form-control" id="nombre" name="nombre" required={true}
@@ -62,11 +68,12 @@ export default function EditarEmpleado() {
                 value={sueldo} onChange={(e)=>onInputChange(e)}/>
             </div>
 
-            <div className='text-center'>
-                <button type="submit" className="btn btn-warning btn-sm me-3">Guardar</button>
-                <a href="/" className="btn btn-danger btn-sm">Regresar</a>
+            <div style={{display:'flex', justifyContent:'center', gap:10}}>
+                <button type="submit" className="btn-modern primary">Guardar</button>
+                <a href="/" className="btn-modern ghost">Regresar</a>
             </div>
-        </form> 
+                    </form>
+                </div>
     </div>
   )
 }

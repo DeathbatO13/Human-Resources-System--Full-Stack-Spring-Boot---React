@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+:root{
+  --bg-gradient-start: #0f172a;
+  --bg-gradient-end: #0b1220;
+  --card-bg: rgba(255,255,255,0.03);
+  --surface: #0b1220;
+  --primary: #7c3aed; /* violet */
+  --accent: #06b6d4; /* teal */
+  --muted: #9aa4b2;
+  --text: #e6eef6;
+  --glass: rgba(255,255,255,0.04);
+}
+
+/* Reset small things */
+*{box-sizing: border-box}
+html,body,#root{height:100%}
+body{
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.12), transparent),
+              linear-gradient(180deg,var(--bg-gradient-start), var(--bg-gradient-end));
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding: 30px 12px;
+}
+
+.container{ max-width:1100px; margin: 0 auto; }
+
+/* App header / hero */
+.app-hero{
+  background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border-radius: 14px;
+  padding: 22px 24px;
+  display:flex; align-items:center; justify-content:space-between;
+  box-shadow: 0 6px 20px rgba(2,6,23,0.6);
+  border: 1px solid rgba(255,255,255,0.03);
+  margin-bottom: 18px;
+}
+.app-title{ font-weight:700; font-size:20px; letter-spacing:0.2px; color:var(--text) }
+.app-sub{ color:var(--muted); font-size:13px; margin-top:4px }
+
+.controls{ display:flex; gap:10px; align-items:center }
+.btn-modern{ padding:8px 12px; border-radius:8px; border: none; font-weight:600 }
+.btn-modern.primary{ background: linear-gradient(90deg,var(--primary), #5b21b6); color:white }
+.btn-modern.ghost{ background:transparent; color:var(--text); border:1px solid rgba(255,255,255,0.06) }
+
+/* Card for table */
+.table-card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 12px; padding:14px; border:1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 8px 28px rgba(3,6,18,0.6);
+}
+
+/* Better table visuals while still using bootstrap's table base */
+.table thead th{ border-bottom: none; color: rgba(255,255,255,0.9); font-weight:700; text-transform:uppercase; font-size:12px }
+.table tbody tr{ transition: transform .16s ease, background .12s ease; }
+.table tbody tr:hover{ transform: translateY(-3px); background: rgba(255,255,255,0.02) }
+.table td, .table th{ vertical-align: middle; padding: 14px 12px }
+.table .btn{ border-radius:7px; padding:6px 10px }
+
+.muted{ color:var(--muted) }
+.big{ font-weight:700; font-size:15px }
+
+/* Navbar updates */
+.navbar{ background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:12px; padding:10px 14px; border:1px solid rgba(255,255,255,0.03) }
+.navbar .navbar-brand{ font-weight:700; color:var(--text) }
+.navbar .nav-link{ color:var(--muted) }
+.navbar .nav-link.active{ color:var(--accent); font-weight:600 }
+
+/* Forms */
+.form-label{ color:var(--muted); font-weight:600 }
+.form-control{ background:transparent; border-radius:8px; border:1px solid rgba(255,255,255,0.06); color:var(--text) }
+
+/* Responsive tweaks */
+@media (max-width:700px){
+  .app-hero{flex-direction:column; align-items:flex-start; gap:12px}
+  .controls{ width:100%; justify-content:space-between}
+}
+
+/* Tiny utility */
+.text-center{ text-align:center }
+.me-3{ margin-right:0.75rem }
