@@ -1,10 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+/**
+ * Navigation bar component for the Human Resources application.
+ * Provides consistent navigation across all pages with responsive
+ * Bootstrap styling and accessibility support.
+ *
+ * @component
+ * @returns {JSX.Element} Responsive navbar with links to Home and Add Employee
+ */
 export default function Navegacion() {
-  return (
-    <div>
 
+  return (
+    
+    <div>
         <nav className="navbar navbar-expand-lg" role="navigation">
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">Sistema de Recursos Humanos</Link>

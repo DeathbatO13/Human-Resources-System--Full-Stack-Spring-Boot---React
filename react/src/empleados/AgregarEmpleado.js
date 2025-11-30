@@ -2,29 +2,55 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
+/**
+ * Component responsible for creating a new employee.
+ * Provides a form fields to capture name, department, and salary,
+ * then sends the data to the backend via POST request.
+ *
+ * @component
+ * @returns {JSX.Element} Form to add a new employee
+ */
 export default function AgregarEmpleado() {
 
-    let navegacion = useNavigate();
+    const navigate = useNavigate();
 
+    /** Base URL of the employees REST API */
+    const urlBase = "http://localhost:8080/rh-app/empleados";
+
+    /** State holding the new employee data */
     const [empleado, setEmpleado] = useState({
         nombre: '',
         departamento: '',
-        sueldo: 0
+        sueldo: ''
     });
 
     const { nombre, departamento, sueldo } = empleado;
 
+    /**
+     * Handles changes in form inputs and updates the employee state.
+     *
+     * @param {React.ChangeEvent<HTMLInputElement>} e - Input change event
+     */
     const onInputChange = (e) => {
         setEmpleado({ ...empleado, [e.target.name]: e.target.value });
-    }
+    };
 
+    /**
+     * Handles form submission: sends the new employee to the backend
+     * and redirects to the employee list upon success.
+     *
+     * @param {React.FormEvent<HTMLFormElement>} e - Form submit event
+     */
     const onSubmit = async (e) => {
         e.preventDefault();
-        const urlBase = "http://localhost:8080/rh-app/empleados";
-        await axios.post(urlBase, empleado);
-        navegacion('/');
-    }
-  
+        try {
+            await axios.post(urlBase, empleado);
+            navigate('/');
+        } catch (error) {
+            console.error("Error al agregar el empleado:", error);
+            alert("Ocurrió un error al guardar el empleado. Verifique los datos.");
+        }
+    };
 
   return (
     <div className='container'>
