@@ -115,7 +115,7 @@ The backend exposes REST endpoints, and the frontend interacts with them through
                │       H2 Database      │
                └────────────────────────┘
 
-##📦 Dockerization Overview
+## 📦 Dockerization Overview
 
 This project includes full containerization for:
 
