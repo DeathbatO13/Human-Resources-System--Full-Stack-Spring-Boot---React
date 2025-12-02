@@ -1,0 +1,12 @@
+services:
+  backend:
+    build: ./Spring
+    container_name: hr-backend
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build: ./react
+    container_name: hr-frontend
+    ports:
+      - "3000:80"
