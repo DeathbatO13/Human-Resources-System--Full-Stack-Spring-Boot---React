@@ -1,7 +1,21 @@
 services:
+  db:
+    image: mysql:8
+    container_name: mysql-rh
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=Deathbat134580
+      - MYSQL_DATABASE=recursos_humanos_db
+
   backend:
     build: ./Spring
     container_name: hr-backend
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/recursos_humanos_db?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Deathbat134580
     ports:
       - "8080:8080"
 
