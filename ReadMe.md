@@ -115,8 +115,56 @@ The backend exposes REST endpoints, and the frontend interacts with them through
                │       H2 Database      │
                └────────────────────────┘
 
+##📦 Dockerization Overview
 
-##  ▶ How to run
+This project includes full containerization for:
+
+### - Backend (Spring Boot)
+Multi-stage build producing a lightweight production JAR image.
+
+### - Frontend (React + Vite)
+Built and served with nginx:alpine for production.
+
+### - MySQL Database
+Persistent storage using Docker volumes.
+
+### - docker-compose.yml
+Orchestrates all services into a stable production stack.
+
+    services:
+      mysql-rh        → MySQL 8
+      hr-backend      → Spring Boot REST API
+      hr-frontend     → React app served by Nginx
+
+
+Application URLs after startup:
+
+Service              URL
+Frontend	        http://localhost:3000
+
+Backend API	        http://localhost:8080/rh-app
+
+## ▶ How to Run (Dockerized)
+### 1️⃣ Build & Start All Services
+
+Inside the project root:
+
+    docker compose up --build
+
+
+This will automatically:
+
+- Build backend JAR
+
+- Build React frontend and bundle it
+
+- Serve frontend via Nginx
+
+- Initialize MySQL
+
+- Start all services in correct order
+
+##  ▶ How to Run Without Docker (Development Mode)
 
 ### Backend
 
@@ -165,9 +213,9 @@ App: http://localhost:3000
 
 ### DevOps
 
-- Dockerize backend and frontend
+- Docker image versioning
 
-- Add docker-compose for full stack orchestration
+- Monitoring/health endpoints
 
 - CI/CD using GitHub Actions
 
