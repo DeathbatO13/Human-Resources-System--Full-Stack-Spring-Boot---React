@@ -17,7 +17,7 @@ A complete employee management platform featuring CRUD operations, a responsive 
 
 - Fully documented → JavaDoc (backend) & JSDoc (frontend)
 
-- Fast development environment with Vite + H2 Database
+- Fast development environment with Vite + MySQL Database
 
 ## 🛠Tech Stack
 
@@ -25,7 +25,7 @@ A complete employee management platform featuring CRUD operations, a responsive 
 - Java 17
 - Spring Boot 3.3+
 - Spring Data JPA
-- H2 Database (in-memory)
+- MySQL Database 
 
 ### Frontend
 - React 18 + Vite
@@ -74,7 +74,7 @@ The backend exposes REST endpoints, and the frontend interacts with them through
 
 ### 🔎 Backend Flow 
     
-    Controller → Service → Repository → H2 Database
+    Controller → Service → Repository → MySQL
 
 ### 📂 Frontend Architecture (React + Vite)
 
@@ -112,7 +112,7 @@ The backend exposes REST endpoints, and the frontend interacts with them through
                              │
                              ▼
                ┌────────────────────────┐
-               │       H2 Database      │
+               │       MySQL Database      │
                └────────────────────────┘
 
 ## 📦 Dockerization Overview
@@ -196,8 +196,6 @@ App: http://localhost:3000
 - Implement authentication (JWT or Basic Auth)
 
 - Integrate Swagger/OpenAPI documentation
-
-- Move from H2 to PostgreSQL/MySQL for production
 
 ### Frontend
 
