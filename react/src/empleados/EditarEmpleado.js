@@ -81,42 +81,41 @@ export default function EditarEmpleado() {
     };
 
     return (
-        <div className='container'>
-                <div className='app-hero'>
-                        <div>
-                                <div className='app-title'>Editar Empleado</div>
-                                <div className='app-sub'>Actualiza los datos del empleado</div>
-                        </div>
+    <div className='container'>
+        <div className='app-hero'>
+            <div>
+                <div className='app-title'>Editar Empleado</div>
+                <div className='app-sub'>Actualiza los datos del empleado</div>
+            </div>
+        </div>
+
+        <div className='table-card'>
+            <form onSubmit={(e)=>onSubmit(e)}>
+                <div className="mb-3">
+                    <label htmlFor="nombre" className="form-label">Nombre</label>
+                    <input type="text" className="form-control" id="nombre" name="nombre" required={true}
+                    value={nombre} onChange={(e)=>onInputChange(e)}/>
+        
                 </div>
 
-                <div className='table-card'>
-                    <form onSubmit={(e)=>onSubmit(e)}>
-            <div className="mb-3">
-                <label htmlFor="nombre" className="form-label">Nombre</label>
-                <input type="text" className="form-control" id="nombre" name="nombre" required={true}
-                value={nombre} onChange={(e)=>onInputChange(e)}/>
-    
-            </div>
-
-            <div className="mb-3">
-                <label htmlFor="departamento" className="form-label">Departamento</label>
-                <input type="text" className="form-control" id="departamento" name="departamento"
-                value={departamento} onChange={(e)=>onInputChange(e)}/>
-            </div>
-
-            <div className="mb-3">
-                <label htmlFor="sueldo" className="form-label">Sueldo</label>
-                <input type="number" step="any" className="form-control" id="sueldo" name="sueldo"
-                value={sueldo} onChange={(e)=>onInputChange(e)}/>
-            </div>
-
-            <div style={{display:'flex', justifyContent:'center', gap:10}}>
-                <button type="submit" className="btn-modern primary">Guardar</button>
-                <a href="/" className="btn-modern ghost">Regresar</a>
-            </div>
-                    </form>
+                <div className="mb-3">
+                    <label htmlFor="departamento" className="form-label">Departamento</label>
+                    <input type="text" className="form-control" id="departamento" name="departamento"
+                    value={departamento} onChange={(e)=>onInputChange(e)}/>
                 </div>
+
+                <div className="mb-3">
+                    <label htmlFor="sueldo" className="form-label">Sueldo</label>
+                    <input type="number" step="any" className="form-control" id="sueldo" name="sueldo"
+                    value={sueldo} onChange={(e)=>onInputChange(e)}/>
+                </div>
+
+                <div style={{display:'flex', justifyContent:'center', gap:10}}>
+                    <button type="submit" className="btn-modern primary">Guardar</button>
+                    <a href="/" className="btn-modern ghost">Regresar</a>
+                </div>
+            </form>
+        </div>
     </div>
-  )
-  
+    )
 }

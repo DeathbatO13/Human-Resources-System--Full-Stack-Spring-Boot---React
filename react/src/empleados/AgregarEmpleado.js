@@ -52,7 +52,7 @@ export default function AgregarEmpleado() {
         }
     };
 
-  return (
+    return (
     <div className='container'>
         <div className='container text-center' style={{margin: '30px'}}>
             <h3>Agregar Empleado</h3>
@@ -84,5 +84,5 @@ export default function AgregarEmpleado() {
         </form>
             
     </div>
-  )
+    )
 }
