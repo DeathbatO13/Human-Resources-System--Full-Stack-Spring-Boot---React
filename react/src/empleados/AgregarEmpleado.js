@@ -62,7 +62,6 @@ export default function AgregarEmpleado() {
                 <label htmlFor="nombre" className="form-label">Nombre</label>
                 <input type="text" className="form-control" id="nombre" name="nombre" required={true}
                 value={nombre} onChange={(e)=>onInputChange(e)}/>
-    
             </div>
 
             <div className="mb-3">
