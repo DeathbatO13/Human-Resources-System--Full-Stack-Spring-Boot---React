@@ -112,7 +112,7 @@ The backend exposes REST endpoints, and the frontend interacts with them through
                              │
                              ▼
                ┌────────────────────────┐
-               │       MySQL Database      │
+               │     MySQL Database     │
                └────────────────────────┘
 
 
