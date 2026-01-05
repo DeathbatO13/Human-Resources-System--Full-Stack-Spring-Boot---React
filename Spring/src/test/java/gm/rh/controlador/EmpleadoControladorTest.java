@@ -5,8 +5,8 @@ import gm.rh.modelo.Empleado;
 import gm.rh.service.IEmpleadoServicio;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
@@ -15,49 +15,45 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-
 @WebMvcTest(EmpleadoControlador.class)
-public class EmpleadoControladorTest {
+class EmpleadoControladorTest {
 
     @Autowired
     private MockMvc mockMvc;
 
-    @MockitoBean
+    @MockBean
     private IEmpleadoServicio empleadoServicio;
 
     @Autowired
     private ObjectMapper objectMapper;
 
     @Test
-    void obtenerEmpleados_debeRetornarLista() throws Exception{
-        when(empleadoServicio.listarEmpleados()).thenReturn(List.of(
-                new Empleado(1, "Juan", "IT", 3000.0)));
+    void obtenerEmpleados_debeRetornarLista() throws Exception {
+        when(empleadoServicio.listarEmpleados()).thenReturn(
+                List.of(new Empleado(1, "Juan", "IT", 3000.0))
+        );
 
         mockMvc.perform(get("/rh-app/empleados"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].nombre").value("Juan"));
-
     }
 
     @Test
-    void obtenerEmpleadoPorId_existente() throws Exception{
+    void obtenerEmpleadoPorId_existente() throws Exception {
         when(empleadoServicio.buscarEmpleadoPorId(1))
                 .thenReturn(new Empleado(1, "Ana", "HR", 2500.0));
 
         mockMvc.perform(get("/rh-app/empleados/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.nombre").value("Ana"));
-
     }
 
     @Test
-    void obtenerEmpleadoPorId_noExistente() throws Exception{
-
+    void obtenerEmpleadoPorId_noExiste() throws Exception {
         when(empleadoServicio.buscarEmpleadoPorId(99)).thenReturn(null);
 
         mockMvc.perform(get("/rh-app/empleados/99"))
                 .andExpect(status().isNotFound());
-
     }
 
     @Test
@@ -81,6 +77,4 @@ public class EmpleadoControladorTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.eliminado").value(true));
     }
-
-
 }
