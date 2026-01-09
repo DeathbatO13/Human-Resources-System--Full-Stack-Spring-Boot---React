@@ -5,19 +5,17 @@ A complete employee management platform featuring CRUD operations, a responsive 
 
 ## 🚀Features
 
-- Employee management (Create, Read, Update, Delete)
+- **Dockerized Environment:** Single-command setup for Backend, Frontend, and Database.
 
-- Salary formatting with currency support
+- **Robust Testing:** Backend covered with JUnit 5 and Mockito.
 
-- Integrated validation and error handling
+- **Employee management:** (Create, Read, Update, Delete).
 
-- Responsive dark-themed interface
+- **Salary formatting:** with currency support.
 
-- Clean API structure using Spring Boot 3.3+
+- **Responsive dark-themed interface:** Built with Bootstrap 5.
 
-- Fully documented → JavaDoc (backend) & JSDoc (frontend)
-
-- Fast development environment with Vite + MySQL Database
+- **Clean API structure:** Using Spring Boot 3.3+.
 
 ## 🛠Tech Stack
 
@@ -137,6 +135,39 @@ npm run dev
 
 App: http://localhost:3000
 
+## 🐳 Docker Deployment (Recommended)
+
+To get the entire system up and running in seconds, ensure you have Docker and Docker Compose installed.
+
+Bash
+
+### Clone the repository
+
+    git clone https://github.com/tu-usuario/tu-repo.git
+    cd tu-repo
+
+### Build and run the containers
+
+    docker-compose up --build
+    Frontend: http://localhost:3000
+
+Backend API: localhost:8080/rh-app
+
+Database: localhost:3306
+
+## 🧪 Testing
+
+### Backend (Unit Testing)
+
+The business logic is protected by a suite of tests using JUnit 5 and Mockito, ensuring the service layer and controllers behave as expected.
+
+Bash
+
+    cd Spring
+    ./mvnw test
+
+[!TIP] Tests cover: Service layer logic, Repository interactions (mocked), and Custom Exception handling.
+
 ## 🚧 Future Improvements (Roadmap)
 
 ### Backend
@@ -165,11 +196,6 @@ App: http://localhost:3000
 
 - CI/CD using GitHub Actions
 
-### Testing
-
-- Backend: JUnit + Mockito
-
-- Frontend: Jest + React Testing Library
 
 ## 👤 Author
 
