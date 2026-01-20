@@ -166,7 +166,8 @@ Bash
     cd Spring
     ./mvnw test
 
-[!TIP] Tests cover: Service layer logic, Repository interactions (mocked), and Custom Exception handling.
+> [!TIP] 
+> Tests cover: Service layer logic, Repository interactions (mocked), and Custom Exception handling.
 
 ## 🚧 Future Improvements (Roadmap)
 

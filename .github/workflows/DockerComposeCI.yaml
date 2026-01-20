@@ -1,0 +1,27 @@
+name: Docker Compose CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  docker-compose-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build and Start Services
+        run: docker compose up -d --build
+
+      - name: Verify Container Status
+        run: docker compose ps
+
+      - name: Check Backend Logs (Opcional)
+        run: docker compose logs backend
+        
+      - name: Shutdown
+        run: docker compose down
